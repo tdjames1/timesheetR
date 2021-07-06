@@ -11,8 +11,12 @@ shinyServer(function(input, output, session) {
         ts <- load_timesheet(file$datapath)
 
         # update month/year/project group inputs
-        shiny::updateSelectInput(session, "month", choices = get_months(ts))
-        shiny::updateSelectInput(session, "year", choices = get_years(ts))
+        shiny::updateSelectInput(session, "month",
+                                 choices = get_months(ts),
+                                 selected = format(Sys.time(), "%B"))
+        shiny::updateSelectInput(session, "year",
+                                 choices = get_years(ts),
+                                 selected = format(Sys.time(), "%Y"))
     
         file
     })

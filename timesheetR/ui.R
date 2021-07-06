@@ -9,8 +9,11 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             shiny::fileInput("file", "Choose file"),
-            shiny::selectInput("month", "Month", choices = month.name),
-            shiny::selectInput("year", "Year", choices = format(Sys.Date(), "%Y")),
+            shiny::selectInput("month", "Month",
+                               choices = month.name,
+                               selected = format(Sys.time(), "%B")),
+            shiny::selectInput("year", "Year",
+                               choices = format(Sys.Date(), "%Y")),
             # TODO add select input for project groups
         ),
 
