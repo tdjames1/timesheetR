@@ -41,7 +41,7 @@ get_summary <- function(file_path, month, year = NULL) {
   res <- group_by(ts_data, year, month, project) %>%
     summarise(hours = sum(hours)) %>%
     left_join(ts_total) %>%
-    mutate(`%` = hours/total*100) %>%
+    mutate(`%` = round(hours/total*100, digits = 2)) %>%
     arrange(desc(`%`), .by_group = TRUE) %>%
     filter(month == format(date, "%m"), year == format(date, "%Y"))
 

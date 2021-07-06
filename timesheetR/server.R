@@ -21,10 +21,14 @@ shinyServer(function(input, output, session) {
         file
     })
 
-    output$summaryTable <- renderTable({
+    output$summaryTable <- renderDataTable({
         file <- fileInput()
         req(file)
         get_summary(file$datapath, input$month, input$year)
-    })
+    }, options = list(
+        paging = FALSE,
+        searching = FALSE,
+        ordering = FALSE
+    ))
 
 })

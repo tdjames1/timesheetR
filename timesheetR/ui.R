@@ -2,7 +2,9 @@ library(shiny)
 
 # Define UI for application that summarises a timesheet
 shinyUI(fluidPage(
-
+    tags$head(
+        tags$style(HTML("table.dataTable thead > tr > th { padding: 8px }"))
+    ),
     titlePanel("Timesheet Summary"),
 
     # Sidebar with controls for file upload and date selection
@@ -19,7 +21,7 @@ shinyUI(fluidPage(
 
         # Show timesheet summary
         mainPanel(
-            shiny::tableOutput("summaryTable")
+            shiny::dataTableOutput("summaryTable")
         )
     )
 ))
