@@ -15,7 +15,7 @@ shinyUI(fluidPage(
                                choices = month.name,
                                selected = format(Sys.time(), "%B")),
             shiny::selectInput("year", "Year",
-                               choices = format(Sys.Date(), "%Y")),
+                               choices = format(Sys.Date(), "%Y"))
             # TODO add select input for project groups
         ),
 
